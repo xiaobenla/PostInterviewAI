@@ -1,8 +1,8 @@
 logs/**
 data/**
 
-!logs/
-!data/
+!data/.gitkeep
+!logs/.gitkeep
 
 .venv
 __pycache__
