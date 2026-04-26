@@ -1,0 +1,27 @@
+{
+  "api": {
+    "dashscope_api_key": "**",
+    "dashscope_base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  },
+  "models": {
+    "asr_model": "qwen3-asr-flash",
+    "llm_model": "qwen-plus",
+    "kb_model": "qwen-long",
+    "max_tokens": 5000
+  },
+  "pipeline": {
+    "asr_segment_seconds": 299,
+    "asr_min_segment_seconds": 30,
+    "history_rounds": 3
+  },
+  "storage": {
+    "runs_dir": "data/runs",
+    "cache_index_path": "data/cache/audio_cache_index.json"
+  },
+  "logging": {
+    "level": "INFO",
+    "app_log_path": "logs/app.log",
+    "error_log_path": "logs/error.log"
+  },
+  "prompt_config_path": "config/prompts.json"
+}

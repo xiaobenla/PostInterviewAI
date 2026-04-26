@@ -1,0 +1,10 @@
+logs/**
+data/**
+
+!logs/
+!data/
+
+.venv
+__pycache__
+
+.DS_Store

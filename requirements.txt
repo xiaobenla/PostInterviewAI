@@ -1,0 +1,4 @@
+gradio
+openai
+dashscope
+oss2
