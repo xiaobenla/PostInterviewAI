@@ -8,7 +8,23 @@
 
 ---
 
-## 1. 核心能力
+## 1. 界面预览
+
+### 1.1 文件与知识库上传（面试复盘页）
+
+![面试复盘页：上传录音、简历与知识库目录](images/1.png)
+
+**面试复盘** 为默认主界面：顶部可在「面试复盘 / 知识库 / 设置」之间切换。左侧为输入区——**上传录音**、**上传简历** 支持拖拽或点击选择文件；**知识库目录路径** 填写本机知识库文件夹路径（如 `/Users/xxx/knowledge_docs`）；点击 **开始复盘** 启动流水线。右侧为结果区——展示当前 **音频文件** 名、**转写结果** 文本，以及 **关联知识库文件** 列表（表头为「文件名」，可复制或展开查看）。
+
+### 1.2 问答展示（流程展示区）
+
+![流程展示区：问答轮次、原答与优化答、追问与日志](images/2.png)
+
+**流程展示区** 用于查看模型对单轮问答的分析结果。顶部状态为流程执行情况；**问答轮次** 下拉可切换不同对话轮次；**刷新日志**、**清理缓存** 用于刷新执行日志与清理缓存。主体区域依次展示：**面试官问题**、**涉及技术点**、**原始回答**（转写得到的原始表述）、**优化后回答**（模型优化后的建议表述）、**追问建议**；最下方为 **执行日志**，便于对照排查各阶段运行情况。
+
+---
+
+## 2. 核心能力
 
 本项目整合了三个已开发子模块能力：
 
@@ -24,7 +40,7 @@
 
 ---
 
-## 2. 功能特性
+## 3. 功能特性
 
 - **统一 Prompt 管理**：所有业务 Prompt 集中在 `config/prompts.json`
 - **参数集中配置**：模型与流程参数统一在 `config/settings.json`
@@ -37,13 +53,16 @@
 
 ---
 
-## 3. 项目结构
+## 4. 项目结构
 
 ```text
 PostInterviewAI/
 ├── app.py
 ├── requirements.txt
 ├── README.md
+├── images/
+│   ├── 1.png
+│   └── 2.png
 ├── config/
 │   ├── settings.json
 │   └── prompts.json
@@ -64,32 +83,32 @@ PostInterviewAI/
 
 ---
 
-## 4. 环境准备
+## 5. 环境准备
 
 建议 Python 3.10+（当前代码可在更高版本运行）。
 
-### 4.1 创建虚拟环境
+### 5.1 创建虚拟环境
 
 ```bash
 cd /Users/xiaobenla/PythonProjects/PostInterviewAI
 python3 -m venv .venv
 ```
 
-### 4.2 安装依赖
+### 5.2 安装依赖
 
 ```bash
 .venv/bin/python -m pip install -r requirements.txt
 ```
 
-### 4.3 系统依赖
+### 5.3 系统依赖
 
 ASR 音频转码依赖 `ffmpeg`，请确保已安装并可在终端执行 `ffmpeg -version`。
 
 ---
 
-## 5. 配置说明
+## 6. 配置说明
 
-### 5.1 `config/settings.json`
+### 6.1 `config/settings.json`
 
 关键配置项：
 
@@ -103,7 +122,7 @@ ASR 音频转码依赖 `ffmpeg`，请确保已安装并可在终端执行 `ffmpe
 - `pipeline.asr_min_segment_seconds`：最小分段阈值
 - `pipeline.history_rounds`：历史轮次窗口
 
-### 5.2 `config/prompts.json`
+### 6.2 `config/prompts.json`
 
 所有 Prompt 统一维护在此，已按原始模块风格整合，支持占位符：
 
@@ -113,7 +132,7 @@ ASR 音频转码依赖 `ffmpeg`，请确保已安装并可在终端执行 `ffmpe
 
 ---
 
-## 6. 启动方式
+## 7. 启动方式
 
 ```bash
 cd /Users/xiaobenla/PythonProjects/PostInterviewAI
@@ -124,7 +143,7 @@ cd /Users/xiaobenla/PythonProjects/PostInterviewAI
 
 ---
 
-## 7. 使用流程
+## 8. 使用流程
 
 1. 打开“设置”页，填写 `DashScope API Key` 并保存
 2. 回到“面试复盘”页，上传录音、上传简历、填写知识库目录
@@ -138,9 +157,9 @@ cd /Users/xiaobenla/PythonProjects/PostInterviewAI
 
 ---
 
-## 8. 输出与缓存
+## 9. 输出与缓存
 
-### 8.1 每次运行输出
+### 9.1 每次运行输出
 
 目录：`data/runs/<run_id>/`
 
@@ -156,7 +175,7 @@ cd /Users/xiaobenla/PythonProjects/PostInterviewAI
 - `qa_optimization.json`
 - `ui_view_model.json`
 
-### 8.2 缓存索引
+### 9.2 缓存索引
 
 - 全流程缓存：`data/cache/audio_cache_index.json`
 - 阶段缓存：`data/cache/stage_cache_index.json`
@@ -165,7 +184,7 @@ cd /Users/xiaobenla/PythonProjects/PostInterviewAI
 
 ---
 
-## 9. 日志说明
+## 10. 日志说明
 
 - 应用日志：`logs/app.log`
 - 错误日志：`logs/error.log`
@@ -175,7 +194,7 @@ cd /Users/xiaobenla/PythonProjects/PostInterviewAI
 
 ---
 
-## 10. 常见问题
+## 11. 常见问题
 
 ### Q1: 报错 `请先在设置中填写 dashscope_api_key`
 
@@ -200,7 +219,6 @@ cd /Users/xiaobenla/PythonProjects/PostInterviewAI
 
 ---
 
-## 11. 说明
+## 12. 说明
 
 本项目用于面试复盘与训练场景，优化回答应保持事实一致，避免虚构履历与项目经验。
-
